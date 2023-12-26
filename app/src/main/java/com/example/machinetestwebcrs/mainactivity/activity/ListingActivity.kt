@@ -16,11 +16,12 @@ import com.example.machinetestwebcrs.model.ProductViewModel
 import com.example.machinetestwebcrs.recyclerviewmanager.OnItemClickListener
 import com.example.machinetestwebcrs.recyclerviewmanager.addOnItemClickListener
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.map
+import androidx.room.Room
 import com.example.machinetestwebcrs.mainactivity.design.CustomProgressBar
-import com.example.machinetestwebcrs.roomdb.MyApp
+import com.example.machinetestwebcrs.roomdb.AppDatabase
 import com.example.machinetestwebcrs.roomdb.ProductEntity
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 
 
@@ -44,43 +45,7 @@ var context:Context=this
         initFn()
         productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java) // Initialize productViewModel
         observeProducts()
-
-
-
-
     }
-  /*  private fun observeProducts() {
-        customProgressBar!!.hide()
-        lifecycleScope.launch {
-            productViewModel.getProducts().collectLatest { pagingData ->
-                productAdapter.submitData(pagingData)
-            }
-            Log.e("pro",productAdapter.getItemAtPosition(0)!!.title)
-
-            *//*val productList: List<ProductEntity> = MyApp.database.productDao().getAllProducts()
-                .firstOrNull() ?: emptyList()*//*
-        }
-    }*/
-
-    private fun observeProducts() {
-        customProgressBar!!.hide()
-        lifecycleScope.launch {
-            /*productViewModel.getProducts().collectLatest { pagingData ->
-                productAdapter.submitData(pagingData)
-            }*/
-            val productList: List<ProductEntity> = MyApp.database.productDao().getAllProducts()
-                .firstOrNull() ?: emptyList()
-            MyApp.database.productDao().getAllProducts().collectLatest { products ->
-                // Update your UI or adapter with the products retrieved from the database
-                productAdapter.updateData(products)
-            }
-        }
-
-
-    }
-
-
-
     private fun initFn() {
 
         recyclerView=findViewById<RecyclerView>(R.id.recyclerView)
@@ -95,9 +60,7 @@ var context:Context=this
 
                 clickedItem?.let {
                     val intent = Intent(context, ListDetailActivity::class.java)
-
                     intent.putExtra("ITEM_ID", it.id)
-Log.e("pdidpass",it.id.toString())
                     startActivity(intent)
                 }
 
@@ -106,5 +69,30 @@ Log.e("pdidpass",it.id.toString())
 
         })
 
+    }
+    private fun observeProducts() {
+        customProgressBar!!.hide()
+
+        lifecycleScope.launch {
+            productViewModel.getProducts().collectLatest { pagingData ->
+                productAdapter.submitData(pagingData)
+                val database = Room.databaseBuilder(
+                    applicationContext,
+                    AppDatabase::class.java, "app_database"
+                ).build()
+                val productDao = database.productDao()
+
+                val products = pagingData.map {
+                        product ->
+                    ProductEntity(
+                        title = product.title,
+                        price = product.price,
+                        description = product.description,
+                        category = product.category,
+                        image = product.image
+                    ) }
+                productDao.insertAll(products)
+            }
+        }
     }
 }

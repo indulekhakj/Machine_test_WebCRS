@@ -1,7 +1,5 @@
 package com.example.machinetestwebcrs.mainactivity.adapter
 
-import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,13 +10,10 @@ import androidx.recyclerview.widget.DiffUtil
 
 import com.example.machinetestwebcrs.R
 import com.example.machinetestwebcrs.model.DataListModel
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
-import com.example.machinetestwebcrs.mainactivity.design.CustomProgressBar
-import com.example.machinetestwebcrs.roomdb.ProductEntity
 
 
 class ProductAdapter : PagingDataAdapter<DataListModel, ProductAdapter.ProductViewHolder>(DIFF_CALLBACK) {
@@ -30,12 +25,7 @@ class ProductAdapter : PagingDataAdapter<DataListModel, ProductAdapter.ProductVi
     fun getItemAtPosition(position: Int): DataListModel? {
         return getItem(position)
     }
-    private var productList: List<ProductEntity> = emptyList()
 
-    fun updateData(newProducts: List<ProductEntity>) {
-        productList = newProducts
-        notifyDataSetChanged()
-    }
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product = getItem(position)
         product?.let {
