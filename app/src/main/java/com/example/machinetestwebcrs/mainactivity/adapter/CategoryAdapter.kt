@@ -39,7 +39,7 @@ class CategoryAdapter(var categories: List<CategoryWithProducts>) :
             override fun onItemClicked(pos: Int, view: View) {
 
                 val intent = Intent(holder.itemView.context, ListDetailActivity::class.java)
-                intent.putExtra("ITEM_ID",category.products[pos].id ) // Assuming categoryId is the ID you want to pass
+                intent.putExtra("ITEM_ID",category.products[pos].id )
                 holder.itemView.context.startActivity(intent)
 
             }
