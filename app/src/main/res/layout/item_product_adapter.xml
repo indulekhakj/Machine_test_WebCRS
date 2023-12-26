@@ -30,7 +30,7 @@
             android:textColor="@color/black"
             android:textSize="16dp"
             android:singleLine="false"
-            android:text="BISAD ABHUDHABI" />
+            android:text="product" />
 
 
     </RelativeLayout>

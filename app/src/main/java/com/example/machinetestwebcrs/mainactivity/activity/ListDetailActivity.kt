@@ -70,7 +70,6 @@ class ListDetailActivity:AppCompatActivity() {
         }
     }
     private fun updateUI(productDetail: DataDetailListModel) {
-        Log.e("title",productDetail.title)
 product_title.text=productDetail.title
         Glide.with(context) //1
             .load(productDetail.image)
