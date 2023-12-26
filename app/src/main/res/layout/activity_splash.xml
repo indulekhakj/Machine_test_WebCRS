@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/rel_six"
+    tools:context=".mainactivity.activity.SplashActivity">
+
+    <ImageView
+        android:id="@+id/iconImageView"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/bag"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/appNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_below="@id/iconImageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="ProductHub"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:visibility="invisible"/>
+</RelativeLayout>

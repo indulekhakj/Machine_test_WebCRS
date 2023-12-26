@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/relSub"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:weightSum="10"
+        android:padding="5dp" >
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:id="@+id/back_arrow"/>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8">
+
+        </RelativeLayout>
+        <com.github.siyamed.shapeimageview.RoundedImageView
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:src="@drawable/bag"
+
+            android:id="@+id/iconapp"/>
+        <TextView
+            android:id="@+id/pagetitle"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="4dp"
+            android:layout_toRightOf="@id/iconapp"
+            android:text="ProductHub"
+            android:textSize="18dp"
+            android:textColor="@color/rel_six"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/viewDivider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/relSub"
+        android:background="@color/rel_six"/>
+
+    <TextView
+        android:id="@+id/product_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewDivider"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/product_title"
+        android:id="@+id/consub"
+        >
+
+        <com.github.siyamed.shapeimageview.CircularImageView
+            android:id="@+id/productimg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            app:siBorderColor="@color/rel_six"
+            app:siBorderWidth="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/consub"
+     android:layout_margin="6dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_below="@+id/description"
+        android:id="@+id/price"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="8dp"
+        android:textStyle="bold"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_margin="4dp"
+        android:background="@drawable/rounded_box_with_outline"
+        android:layout_below="@+id/price">
+
+        <com.example.machinetestwebcrs.mainactivity.design.StarRatingView
+            android:id="@+id/starRatingView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:numStars="5"
+            app:rating="3.5" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rate_count"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/starRatingView"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/goback_con"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/rel_six"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:id="@+id/backarrow"
+            android:background="@drawable/baseline_keyboard_double_arrow_left_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/backbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:textSize="16dp"
+            android:background="@color/rel_six"
+            android:text="Go to ProductList"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/backarrow"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </Button>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <!--  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/price"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        &lt;!&ndash; Use the custom StarRatingView in your layout &ndash;&gt;
+
+
+        &lt;!&ndash; Other views in your layout &ndash;&gt;
+
+    </LinearLayout>-->
+
+
+</RelativeLayout>
